@@ -15,26 +15,18 @@ function todoReducer(state = initialState, action) {
         ],
       };
     case 'TODO_EDIT':
-      todo = state.todoList.slice(action.payload, action.payload + 1);
-      todo.edit = true;
-      return {
-        ...state,
-        todoList: [
-          ...state.todoList.slice(0, action.payload),
-          ...todo,
-          ...state.todoList.slice(action.payload + 1),
-        ],
+      todo = state.todoList[action.payload.todoIndex];
+      todo = {
+        ...todo,
+        edit: !todo.edit,
+        title: action.payload.title,
       };
-    case 'TODO_EDIT_DONE':
-      todo = state.todoList.slice(action.payload, action.payload + 1);
-      todo.edit = false;
-      todo.title = action.payload.todoTitle;
       return {
         ...state,
         todoList: [
-          ...state.todoList.slice(0, action.payload),
-          ...todo,
-          ...state.todoList.slice(action.payload + 1),
+          ...state.todoList.slice(0, action.payload.todoIndex),
+          todo,
+          ...state.todoList.slice(action.payload.todoIndex + 1),
         ],
       };
     case 'TODO_COMPLETED':

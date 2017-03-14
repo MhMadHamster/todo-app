@@ -10,6 +10,7 @@ class Todo extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
   handleChange(event) {
@@ -18,11 +19,25 @@ class Todo extends Component {
     });
   }
 
+  handleAddTodo() {
+    if (!this.state.value) return;
+
+    const { todoAdd } = this.props;
+
+    todoAdd({
+      title: this.state.value,
+      edit: false,
+      completed: false,
+    });
+
+    this.setState({
+      value: '',
+    });
+  }
+
   render() {
     const { 
       data, 
-      todoList, 
-      todoAdd, 
       todoCompleted, 
       todoRemove, 
       todoEdit,
@@ -35,22 +50,17 @@ class Todo extends Component {
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <button 
-            onClick={() => todoAdd({
-              title: this.state.value,
-              edit: false,
-              completed: false,
-            })}
-          >Add</button>
+          <button onClick={this.handleAddTodo}>Add</button>
         </div>
         <ul>
           {data.todoList.map((todo, index) => (
             <TodoItem
               {...todo}
+              onComplete={todoCompleted}
+              onEdit={todoEdit}
+              onRemove={todoRemove}
               key={index}
-              onComplete={() => todoCompleted(index)}
-              onRemove={() => todoRemove(index)}
-              onEdit={() => todoEdit(index)}
+              index={index}
             />
           ))}
         </ul>

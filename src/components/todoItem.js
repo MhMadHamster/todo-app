@@ -1,18 +1,52 @@
 import React from 'react';
 import '../../styles/todoItem.scss';
 
-const TodoItem = props => (
-  <li className="todoItem">
-    <a 
-      href="#"
-      className={props.completed ? 'completed' : ''}
-      onClick={props.onComplete}
-    >
-      {props.title}
-    </a>
-    <button onClick={props.onEdit}>Edit</button>
-    <button onClick={props.onRemove}>Remove</button>
-  </li>
-);
+class TodoItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: props.title,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value,
+    });
+  }
+
+  render() {
+    const {
+      onComplete,
+      onEdit,
+      onRemove,
+      edit,
+      completed,
+      index,
+      title
+    } = this.props;
+    return (
+      <li className="todoItem">
+        <input
+          className={completed ? 'completed' : ''}
+          onClick={!edit ? () => onComplete(index) : () => {}}
+          value={this.state.value}
+          readOnly={!edit}
+          onChange={this.handleChange}
+        />
+        <button
+          onClick={() => onEdit({
+            title: this.state.value,
+            todoIndex: index,
+          })}
+        >Edit</button>
+        <button onClick={() => onRemove(index)}>Remove</button>
+      </li>
+    );
+  }
+}
 
 export default TodoItem;

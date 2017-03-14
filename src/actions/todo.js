@@ -5,16 +5,9 @@ export function todoAdd(todo) {
   };
 }
 
-export function todoEdit(todoIndex) {
+export function todoEdit(todo) {
   return {
     type: 'TODO_EDIT',
-    payload: todoIndex,
-  };
-}
-
-export function todoEditDone(todo) {
-  return {
-    type: 'TODO_EDIT_DONE',
     payload: todo,
   };
 }

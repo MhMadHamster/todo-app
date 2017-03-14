@@ -10,14 +10,11 @@ const mapDispatchToProps = dispatch => ({
   todoAdd: (todo) => {
     dispatch(todoAdd(todo))
   },
-  todoEdit: (todoIndex) => {
-    dispatch(todoEdit(todoIndex))
+  todoEdit: (todo) => {
+    dispatch(todoEdit(todo))
   },
   todoRemove: (todoIndex) => {
     dispatch(todoRemove(todoIndex))
-  },
-  todoEditDone: (todo) => {
-    dispatch(todoEditDone(todo))
   },
   todoCompleted: (todoIndex) => {
     dispatch(todoCompleted(todoIndex))
