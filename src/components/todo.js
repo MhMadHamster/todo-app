@@ -53,14 +53,13 @@ class Todo extends Component {
           <button onClick={this.handleAddTodo}>Add</button>
         </div>
         <ul>
-          {data.todoList.map((todo, index) => (
+          {data.todoList.map(todo => (
             <TodoItem
               {...todo}
               onComplete={todoCompleted}
               onEdit={todoEdit}
               onRemove={todoRemove}
-              key={index}
-              index={index}
+              key={todo.todoId}
             />
           ))}
         </ul>

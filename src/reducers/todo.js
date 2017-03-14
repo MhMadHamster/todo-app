@@ -3,8 +3,6 @@ const initialState = {
 };
 
 function todoReducer(state = initialState, action) {
-  let todo;
-
   switch (action.type) {
     case 'TODO_ADD':
       return {
@@ -15,41 +13,36 @@ function todoReducer(state = initialState, action) {
         ],
       };
     case 'TODO_EDIT':
-      todo = state.todoList[action.payload.todoIndex];
-      todo = {
-        ...todo,
-        edit: !todo.edit,
-        title: action.payload.title,
-      };
       return {
         ...state,
-        todoList: [
-          ...state.todoList.slice(0, action.payload.todoIndex),
-          todo,
-          ...state.todoList.slice(action.payload.todoIndex + 1),
-        ],
+        todoList: state.todoList.map((todoItem) => {
+          if (todoItem.todoId === action.payload.todoId) {
+            return {
+              ...todoItem,
+              edit: !todoItem.edit,
+              title: action.payload.title,
+            };
+          }
+          return todoItem;
+        }),
       };
     case 'TODO_COMPLETED':
-      todo = state.todoList[action.payload];
-      todo = {
-        ...todo,
-        completed: !todo.completed,
-      };
       return {
         ...state,
-        todoList: [
-          ...state.todoList.slice(0, action.payload),
-          todo,
-          ...state.todoList.slice(action.payload + 1),
-        ],
+        todoList: state.todoList.map((todoItem) => {
+          if (todoItem.todoId === action.payload) {
+            return {
+              ...todoItem,
+              completed: !todoItem.completed,
+            };
+          }
+          return todoItem;
+        }),
       };
     case 'TODO_REMOVE':
       return {
         ...state,
-        todoList: [
-          ...state.todoList.slice(0, action.payload),
-          ...state.todoList.slice(action.payload + 1),
-        ],
+        todoList: state.todoList.filter(todoItem => todoItem.todoId !== action.payload),
       };
     default:
       return state;

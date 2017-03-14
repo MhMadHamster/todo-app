@@ -25,14 +25,14 @@ class TodoItem extends React.Component {
       onRemove,
       edit,
       completed,
-      index,
-      title
+      title,
+      todoId
     } = this.props;
     return (
       <li className="todoItem">
         <input
           className={completed ? 'completed' : ''}
-          onClick={!edit ? () => onComplete(index) : () => {}}
+          onClick={!edit ? () => onComplete(todoId) : () => {}}
           value={this.state.value}
           readOnly={!edit}
           onChange={this.handleChange}
@@ -40,10 +40,10 @@ class TodoItem extends React.Component {
         <button
           onClick={() => onEdit({
             title: this.state.value,
-            todoIndex: index,
+            todoId,
           })}
         >Edit</button>
-        <button onClick={() => onRemove(index)}>Remove</button>
+        <button onClick={() => onRemove(todoId)}>Remove</button>
       </li>
     );
   }

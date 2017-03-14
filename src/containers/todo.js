@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 import Todo from '../components/todo';
-import { todoAdd, todoRemove, todoEdit, todoEditDone, todoCompleted } from '../actions/todo';
+import { todoAdd, todoRemove, todoEdit, todoCompleted } from '../actions/todo';
 
 const mapStateToProps = state => ({
-  data: state,
+  data: {
+    ...state,
+    todoList: state.todoList.slice().sort((a, b) => a.title < b.title),
+  },
 });
 
 const mapDispatchToProps = dispatch => ({

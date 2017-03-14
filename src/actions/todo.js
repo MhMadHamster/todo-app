@@ -1,7 +1,12 @@
+let nextTodoId = 0;
+
 export function todoAdd(todo) {
   return {
     type: 'TODO_ADD',
-    payload: todo,
+    payload: {
+      ...todo,
+      todoId: nextTodoId++,
+    },
   };
 }
 
