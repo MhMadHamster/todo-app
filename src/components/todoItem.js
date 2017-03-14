@@ -1,8 +1,17 @@
 import React from 'react';
+import '../../styles/todoItem.scss';
 
 const TodoItem = props => (
-  <li className={props.complete ? 'completed' : ''}>
-    {props.title}
+  <li className="todoItem">
+    <a 
+      href="#"
+      className={props.completed ? 'completed' : ''}
+      onClick={props.onComplete}
+    >
+      {props.title}
+    </a>
+    <button onClick={props.onEdit}>Edit</button>
+    <button onClick={props.onRemove}>Remove</button>
   </li>
 );
 

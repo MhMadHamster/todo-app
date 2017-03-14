@@ -19,7 +19,14 @@ class Todo extends Component {
   }
 
   render() {
-    const { data, todoList, todoAdd } = this.props;
+    const { 
+      data, 
+      todoList, 
+      todoAdd, 
+      todoCompleted, 
+      todoRemove, 
+      todoEdit,
+    } = this.props;
     return (
       <div>
         <div>
@@ -32,7 +39,7 @@ class Todo extends Component {
             onClick={() => todoAdd({
               title: this.state.value,
               edit: false,
-              complete: false,
+              completed: false,
             })}
           >Add</button>
         </div>
@@ -41,6 +48,9 @@ class Todo extends Component {
             <TodoItem
               {...todo}
               key={index}
+              onComplete={() => todoCompleted(index)}
+              onRemove={() => todoRemove(index)}
+              onEdit={() => todoEdit(index)}
             />
           ))}
         </ul>

@@ -7,7 +7,6 @@ function todoReducer(state = initialState, action) {
 
   switch (action.type) {
     case 'TODO_ADD':
-    console.log(action.payload);
       return {
         ...state,
         todoList: [
@@ -27,7 +26,7 @@ function todoReducer(state = initialState, action) {
         ],
       };
     case 'TODO_EDIT_DONE':
-      todo = state.todoList.slice(action.payload.todoId, action.payload.todoId + 1);
+      todo = state.todoList.slice(action.payload, action.payload + 1);
       todo.edit = false;
       todo.title = action.payload.todoTitle;
       return {
@@ -39,13 +38,16 @@ function todoReducer(state = initialState, action) {
         ],
       };
     case 'TODO_COMPLETED':
-      todo = state.todoList.slice(action.payload.todoId, action.payload.todoId + 1);
-      todo.completed = true;
+      todo = state.todoList[action.payload];
+      todo = {
+        ...todo,
+        completed: !todo.completed,
+      };
       return {
         ...state,
         todoList: [
           ...state.todoList.slice(0, action.payload),
-          ...todo,
+          todo,
           ...state.todoList.slice(action.payload + 1),
         ],
       };
