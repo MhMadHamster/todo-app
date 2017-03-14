@@ -28,8 +28,11 @@ class TodoItem extends React.Component {
       title,
       todoId
     } = this.props;
+
+    const className = edit ? 'edit' : '';
+
     return (
-      <li className="todoItem">
+      <li className={`${className} todoItem`}>
         <input
           className={completed ? 'completed' : ''}
           onClick={!edit ? () => onComplete(todoId) : () => {}}
@@ -38,12 +41,16 @@ class TodoItem extends React.Component {
           onChange={this.handleChange}
         />
         <button
+          className="edit-btn"
           onClick={() => onEdit({
             title: this.state.value,
             todoId,
           })}
         >Edit</button>
-        <button onClick={() => onRemove(todoId)}>Remove</button>
+        <button
+          className="remove-btn"
+          onClick={() => onRemove(todoId)}
+        >Remove</button>
       </li>
     );
   }

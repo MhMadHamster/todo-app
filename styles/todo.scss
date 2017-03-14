@@ -1,0 +1,42 @@
+@import 'config';
+
+.todo-wrapper {
+  display: inline-block;
+  width: 400px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+
+  h1 {
+    color: $dark;
+  }
+}
+
+.todo-input {
+  display: flex;
+  
+  input {
+    border: 1px solid rgba($grey, .3);
+    color: $dark;
+    font-size: 18px;
+    padding: 5px 10px;
+    flex: 1 0 auto;
+  }
+
+  button {
+    font-size: 18px;
+    height: 33px;
+    position: relative;
+    left: -1px;
+    border: 1px solid rgba($grey, .3);
+    color: $dark;
+    font-weight: bold;
+  }
+}
+
+.todo-list {
+  list-style-type: none;
+  margin: 20px 0 0;
+  padding: 0;
+}

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { saveState } from './localStorage';
 import Store from './store';
 import TodoContainer from './containers/todo';
+import '../styles/app.scss';
 
 Store.subscribe(() => {
   saveState(Store.getState());

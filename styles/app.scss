@@ -1,0 +1,29 @@
+@import 'config';
+
+html, body {
+  height: 100%;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+html {
+  background-color: $light;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+input,
+button {
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}

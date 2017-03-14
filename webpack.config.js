@@ -1,7 +1,7 @@
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: './bundle.js'
+    filename: './dist/bundle.js'
   },
   module: {
     loaders: [
@@ -13,15 +13,19 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [{
-          loader: "style-loader"
+          loader: 'style-loader',
         },
         {
-          loader: "css-loader"
+          loader: 'css-loader',
         },
         {
-          loader: "sass-loader"
+          loader: 'sass-loader',
         }]
-      }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
+      },
     ],
   }
 }

@@ -1,9 +1,64 @@
+@import 'config';
+
 .todoItem {
+  display: flex;
+  margin: 20px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba($dark, .3);
+
   input {
     text-decoration: none;
+    border: 1px solid transparent;
+    font-size: 22px;
+    height: 35px;
+    color: $dark;
+    text-align: center;
+    flex: 1 0 auto;
+    box-sizing: border-box;
 
     &.completed {
       text-decoration: line-through;
+    }
+  }
+
+  .edit-btn,
+  .remove-btn {
+    font-size: 0;
+    background-color: transparent;
+    border: 1px solid rgba($light, .5);
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+    background-size: 80% 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: border-color .3s;
+    margin-left: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      border-color: $dark;
+    }
+  }
+
+  .edit-btn {
+    background-image: url(../img/pen.svg);
+  }
+
+  .remove-btn {
+    background-image: url(../img/cross.svg);
+  }
+
+  &.edit {
+    input {
+      border-color: $grey;
+    }
+
+    .edit-btn {
+      border-color: $dark;
     }
   }
 }

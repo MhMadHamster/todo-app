@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItem from './todoItem';
+import '../../styles/todo.scss';
 
 class Todo extends Component {
   constructor(props) {
@@ -43,8 +44,9 @@ class Todo extends Component {
       todoEdit,
     } = this.props;
     return (
-      <div>
-        <div>
+      <div className="todo-wrapper">
+        <h1>ToDo App</h1>
+        <div className="todo-input">
           <input
             type="text"
             value={this.state.value}
@@ -52,7 +54,7 @@ class Todo extends Component {
           />
           <button onClick={this.handleAddTodo}>Add</button>
         </div>
-        <ul>
+        <ul className="todo-list">
           {data.todoList.map(todo => (
             <TodoItem
               {...todo}
