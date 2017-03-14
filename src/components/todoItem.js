@@ -60,7 +60,7 @@ TodoItem.propTypes = {
   onEdit: React.PropTypes.func.isRequired,
   onRemove: React.PropTypes.func.isRequired,
   title: React.PropTypes.string,
-  todoId: React.PropTypes.number.isRequired,
+  todoId: React.PropTypes.string.isRequired,
   completed: React.PropTypes.bool,
   edit: React.PropTypes.bool,
 };

@@ -37,10 +37,10 @@ class Todo extends Component {
   }
 
   render() {
-    const { 
-      data, 
-      todoCompleted, 
-      todoRemove, 
+    const {
+      data,
+      todoCompleted,
+      todoRemove,
       todoEdit,
     } = this.props;
     return (
@@ -66,8 +66,18 @@ class Todo extends Component {
           ))}
         </ul>
       </div>
-    )
+    );
   }
 }
+
+Todo.propTypes = {
+  data: React.PropTypes.shape({
+    todoList: React.PropTypes.array,
+  }).isRequired,
+  todoCompleted: React.PropTypes.func.isRequired,
+  todoRemove: React.PropTypes.func.isRequired,
+  todoEdit: React.PropTypes.func.isRequired,
+  todoAdd: React.PropTypes.func.isRequired,
+};
 
 export default Todo;
