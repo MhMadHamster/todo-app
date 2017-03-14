@@ -1,32 +1,24 @@
 import { v4 } from 'node-uuid';
 
-export function todoAdd(todo) {
-  return {
-    type: 'TODO_ADD',
-    payload: {
-      ...todo,
-      todoId: v4(),
-    },
-  };
-}
+export const todoAdd = todo => ({
+  type: 'TODO_ADD',
+  payload: {
+    ...todo,
+    todoId: v4(),
+  },
+});
 
-export function todoEdit(todo) {
-  return {
-    type: 'TODO_EDIT',
-    payload: todo,
-  };
-}
+export const todoEdit = todo => ({
+  type: 'TODO_EDIT',
+  payload: todo,
+});
 
-export function todoCompleted(todoIndex) {
-  return {
-    type: 'TODO_COMPLETED',
-    payload: todoIndex,
-  };
-}
+export const todoCompleted = todoIndex => ({
+  type: 'TODO_COMPLETED',
+  payload: todoIndex,
+});
 
-export function todoRemove(todoIndex) {
-  return {
-    type: 'TODO_REMOVE',
-    payload: todoIndex,
-  };
-}
+export const todoRemove = todoIndex => ({
+  type: 'TODO_REMOVE',
+  payload: todoIndex,
+});
