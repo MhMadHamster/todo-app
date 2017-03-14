@@ -25,8 +25,7 @@ class TodoItem extends React.Component {
       onRemove,
       edit,
       completed,
-      title,
-      todoId
+      todoId,
     } = this.props;
 
     const className = edit ? 'edit' : '';
@@ -55,5 +54,21 @@ class TodoItem extends React.Component {
     );
   }
 }
+
+TodoItem.propTypes = {
+  onComplete: React.PropTypes.func.isRequired,
+  onEdit: React.PropTypes.func.isRequired,
+  onRemove: React.PropTypes.func.isRequired,
+  title: React.PropTypes.string,
+  todoId: React.PropTypes.number.isRequired,
+  completed: React.PropTypes.bool,
+  edit: React.PropTypes.bool,
+};
+
+TodoItem.defaultProps = {
+  title: '',
+  completed: false,
+  edit: false,
+};
 
 export default TodoItem;
