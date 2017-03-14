@@ -1,11 +1,11 @@
-let nextTodoId = 0;
+import { v4 } from 'node-uuid';
 
 export function todoAdd(todo) {
   return {
     type: 'TODO_ADD',
     payload: {
       ...todo,
-      todoId: nextTodoId++,
+      todoId: v4(),
     },
   };
 }
